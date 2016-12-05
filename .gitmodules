@@ -1,0 +1,3 @@
+[submodule "libs"]
+	path = libs
+	url = https://github.com/le040993/coi-external-libs.git
