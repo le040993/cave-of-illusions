@@ -39,7 +39,6 @@
 #define GLOBAL_H
 
 #include <exception>
-#include <vector>
 
 #include "graphics.h"
 #include "strings.h"
@@ -72,7 +71,16 @@ public:
 private:
     TextContainer placeholdertext;
 protected:
-    std::vector<TextContainer> text;
+    Screen() {};
+};
+
+class NotImplementedScreen : public Screen
+{
+public:
+    NotImplementedScreen(SDL_Renderer* renderer, ProgState& progstate);
+    int RunScreen(ProgState& progstate, Window& window);
+private:
+    TextContainer notimplementedtext;
 };
 
 // The program class

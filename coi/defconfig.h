@@ -37,7 +37,11 @@
 // NOT alter any of these defaults if your repository is synced to the original;
 // the defaults may be changed without notice. If you need to change any of the
 // variables for your own build, then the variable and its new value must be
-// supplied on the command line.
+// supplied on the command line. Alternatively, you may supply a config.h file
+// and define HAVE_CONFIG_H on the command line. Each setting in the config.h
+// file must be set as follows:
+//   #undef SETTING
+//   #define SETTING newvalue
 
 #pragma once
 
@@ -45,11 +49,17 @@
 #define DEFCONFIG_H
 
 // The location of the folder containing the program's resources. For non-
-// portable Unix installations, this should be set to $(PREFIX)/share/coi/ on
-// the command line (e.g. -DDATADIR=/usr/local/share/coi/). The default value is
-// "./" (the current directory), which is best suited for Windows.
+// portable Unix installations, this should be set to $(PREFIX)/share/games/coi/
+// on the command line (e.g. -DDATADIR=/usr/local/share/games/coi/). The default
+// value is "./" (the current directory), which is best suited for Windows. The
+// trailing slash is mandatory; without it, there may be references to folders
+// named "coifont", for example.
 #ifndef DATADIR
 #define DATADIR "./"
+#endif
+
+#ifdef HAVE_CONFIG_H
+#include "config.h"
 #endif
 
 #endif /* DEFCONFIG_H */

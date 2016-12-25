@@ -164,6 +164,7 @@ copy /y "$(SolutionDir)libs\SDL2_ttf\lib\$(PlatformTarget)\libfreetype-6.dll" "$
   <ItemGroup>
     <ClCompile Include="coi.cpp" />
     <ClCompile Include="global.cpp" />
+    <ClCompile Include="mainmenu.cpp" />
     <ClCompile Include="strings.cpp" />
     <ClCompile Include="strings_en.cpp" />
     <ClCompile Include="textcontainer.cpp" />
@@ -173,7 +174,7 @@ copy /y "$(SolutionDir)libs\SDL2_ttf\lib\$(PlatformTarget)\libfreetype-6.dll" "$
     <ClInclude Include="defconfig.h" />
     <ClInclude Include="global.h" />
     <ClInclude Include="graphics.h" />
-    <ClInclude Include="resource.h" />
+    <ClInclude Include="screens.h" />
     <ClInclude Include="strings.h" />
     <ClInclude Include="window.h" />
   </ItemGroup>

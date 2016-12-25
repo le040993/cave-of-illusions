@@ -16,3 +16,7 @@ Planned features include:
 - Windows: A Visual Studio solution is available.
 - OS X: Support is planned.
 - Linux: Support is planned.
+
+## Notes on debugging
+
+When debugging using Microsoft Visual Studio, make sure that the Working Directory setting in the Debugging section of the project properties is set to $(SolutionDir), not the default $(ProjectDir). This is because the program will look for fonts in "./font" (if it is not changed), and the program will abort if it cannot find the fonts. The relevant setting is not actually stored in the coi.vcproj file, but is considered a user-specific setting and as such is stored in coi.vcproj.user, which is excluded by the repository .gitignore file.

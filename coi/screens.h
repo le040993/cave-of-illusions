@@ -35,48 +35,21 @@
 
 #pragma once
 
-#ifndef STRINGS_H
-#define STRINGS_H
+#ifndef SCREENS_H
+#define SCREENS_H
 
-#include <string>
-#include <unordered_map>
+#include <array>
 
-// Indexes to each string in the globalstrings structure.
-enum StringIdent
-{
-    STRING_LOCALE_NAME,
-    STRING_FONTFILE,
-    STRING_IDENT_TITLE,
-    STRING_PLACEHOLDER,
-    STRING_NOTIMPLEMENTED,
-    STRING_NEW_GAME,
-    STRING_CONTINUE,
-    STRING_LOAD_GAME,
-    STRING_OPTIONS,
-    STRING_ACHIEVEMENTS,
-    STRING_HELP,
-    STRING_MAINMENU_SPLASH,
-};
+#include "global.h"
 
-// Class holding translated strings
-class TranslatedStrings
+// Main menu screen. This should be the first screen called on startup.
+class MainMenuScreen : public Screen
 {
 public:
-    TranslatedStrings();
-    void SetLocale(std::string& locstring);
-    void SetLocale(const char* locstring);
-    const char* GetLocaleName(std::string& locstring) const;
-    const char* GetLocaleName(const char* locstring) const;
-    std::string GetLocale() const;
-    const char* GetFont(std::string& locstring) const;
-    const char* GetFont(const char* locstring) const;
-    const char* operator[](StringIdent idx) const;
-    static TranslatedStrings* globalstrings;
+    MainMenuScreen(SDL_Renderer* renderer, ProgState& progstate);
+    int RunScreen(ProgState& progstate, Window& window);
 private:
-    std::unordered_map<std::string, std::unordered_map<StringIdent, const char*>> transstrings;
-    std::string curlocale;
+    std::array<TextContainer, 13> text;
 };
 
-std::unordered_map<StringIdent, const char*> InitTranslatedStrings_en();
-
-#endif /* STRINGS_H */
+#endif /* SCREENS_H */
